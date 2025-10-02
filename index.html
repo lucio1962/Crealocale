@@ -62,17 +62,17 @@ body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--te
 <nav class="navbar" id="navbar">
   <div class="logo">CreaLocale</div>
   <div class="nav-links">
-    <a href="#demo">Demo</a>
-    <a href="wizard.html">Wizard</a>
-    <a href="premium.html">Premium</a>
+    <!-- Free nascosto -->
+    <!-- <a href="wizard.html">Free</a> -->
+    <a href="premium.html?type=pizzeria">Premium</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <h1>Crea il tuo sito in pochi click</h1>
-  <p>Scegli un modello demo, personalizza i tuoi dati, e hai il tuo sito pronto.</p>
-  <button class="cta-btn" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Inizia ora</button>
+  <p>La versione Premium è completa e pronta per diventare il tuo sito ufficiale.</p>
+  <button class="cta-btn" onclick="location.href='premium.html?type=pizzeria'">Inizia ora (Premium)</button>
 </section>
 
 <!-- DEMO -->
@@ -82,14 +82,14 @@ body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--te
     <img src="https://images.unsplash.com/photo-1601924582971-df2b7d9a94bc?auto=format&fit=crop&w=800&q=80" alt="Pizzeria demo">
     <h2>Pizzeria Demo – Ciao Pizza</h2>
     <a href="https://lucio1962.github.io/ciao-pizza/" target="_blank">👀 Guarda Demo</a>
-    <button onclick="location.href='wizard.html?type=pizzeria'">✨ Crea il tuo simile</button>
+    <button onclick="location.href='premium.html?type=pizzeria'">✨ Crea versione Premium</button>
   </div>
 
   <div class="card">
     <img src="https://images.unsplash.com/photo-1541542684-4f1f2c85c3de?auto=format&fit=crop&w=800&q=80" alt="Pub demo">
     <h2>Pub Demo – Drinking Pub 2024</h2>
     <a href="https://lucio1962.github.io/drinking-pub-2024/" target="_blank">👀 Guarda Demo</a>
-    <button onclick="location.href='wizard.html?type=pub'">✨ Crea il tuo simile</button>
+    <button onclick="location.href='premium.html?type=pub'">✨ Crea versione Premium</button>
   </div>
 
 </div>
