@@ -3,26 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CreaLocale – Siti Demo</title>
+<title>CreaLocale – Demo</title>
 <link rel="stylesheet" href="style.css">
 <style>
-body{margin:0;font-family:"Inter",sans-serif;background:#0d0f18;color:#f2f5ff}
-h1{text-align:center;padding:1rem;background:linear-gradient(135deg,#7b61ff,#00d4ff);
-   -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.container{padding:1rem}
-.card{background:rgba(255,255,255,.05);border-radius:16px;padding:1rem;margin:1rem 0;
-      box-shadow:0 6px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px)}
-.card img{width:100%;border-radius:12px;margin-bottom:.5rem}
-.card h2{margin:.5rem 0}
-.card a, .card button{display:block;width:100%;padding:1rem;margin:.4rem 0;text-align:center;
-    border-radius:12px;border:none;font-size:1.1rem;cursor:pointer;text-decoration:none}
-.card a{background:#222;color:#00d4ff}
-.card button{background:linear-gradient(135deg,#7b61ff,#00d4ff);color:#fff}
+:root { --bg:#f3f4f9; --accent1:#7b61ff; --accent2:#00d4ff; --text:#222; }
+body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text)}
+/* NAVBAR */
+.navbar{
+  position:sticky;top:0;z-index:10;
+  background:#fff;display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1rem;box-shadow:0 2px 6px rgba(0,0,0,.1)
+}
+.logo{
+  font-size:1.4rem;font-weight:700;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+.nav-links a{
+  margin-left:1rem;text-decoration:none;color:#333;font-size:.95rem;font-weight:500
+}
+/* HERO */
+.hero{
+  text-align:center;padding:3rem 1rem;
+  background:linear-gradient(135deg,rgba(123,97,255,.8),rgba(0,212,255,.7)),
+             url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  color:#fff
+}
+.hero h1{font-size:2rem;margin-bottom:.5rem}
+.hero p{font-size:1.1rem;margin-bottom:1.5rem}
+.hero button{
+  padding:1rem 1.5rem;border:none;border-radius:12px;
+  background:#fff;color:#333;font-size:1rem;font-weight:600;cursor:pointer
+}
+/* CONTAINER */
+.container{padding:1rem;max-width:500px;margin:auto}
+.card{background:#fff;border-radius:16px;padding:1rem;margin:1rem 0;
+      box-shadow:0 6px 14px rgba(0,0,0,.1)}
+.card img{width:100%;border-radius:12px;margin-bottom:.6rem}
+.card h2{margin:.5rem 0;font-size:1.2rem;color:#333}
+.card a, .card button{
+  display:block;width:100%;padding:1rem;margin:.4rem 0;
+  text-align:center;border-radius:12px;border:none;
+  font-size:1.05rem;cursor:pointer;text-decoration:none
+}
+.card a{background:#e9e9ef;color:#333}
+.card button{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-weight:600}
+button.home-btn{background:#555;color:#fff;margin-top:1rem}
 </style>
 </head>
 <body>
-<h1>Scegli il tuo sito demo</h1>
-<div class="container">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">CreaLocale</div>
+  <div class="nav-links">
+    <a href="#demo">Demo</a>
+    <a href="wizard.html">Wizard</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Crea il tuo sito in pochi click</h1>
+  <p>Scegli un modello demo, personalizza i tuoi dati, e hai il tuo sito pronto.</p>
+  <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Inizia ora</button>
+</section>
+
+<!-- DEMO -->
+<div id="demo" class="container">
 
   <div class="card">
     <img src="https://images.unsplash.com/photo-1601924582971-df2b7d9a94bc?auto=format&fit=crop&w=800&q=80" alt="Pizzeria demo">
@@ -37,6 +86,8 @@ h1{text-align:center;padding:1rem;background:linear-gradient(135deg,#7b61ff,#00d
     <a href="https://lucio1962.github.io/drinking-pub-2024/" target="_blank">👀 Guarda Demo</a>
     <button onclick="location.href='wizard.html?type=pub'">✨ Crea il tuo simile</button>
   </div>
+
+  <button class="home-btn" onclick="location.href='index.html'">🏠 Torna all’inizio</button>
 
 </div>
 </body>
