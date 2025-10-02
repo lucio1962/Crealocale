@@ -1,0 +1,31 @@
+/* Stili base condivisi */
+body {
+  margin:0;
+  font-family: "Inter", sans-serif;
+}
+#chatbot-toggle {
+  position:fixed; bottom:20px; right:20px;
+  width:56px; height:56px; border-radius:50%;
+  background:#7b61ff; border:none; color:#fff;
+  font-size:26px; box-shadow:0 4px 12px rgba(0,0,0,.3);
+}
+#chatbot-box {
+  position:fixed; bottom:80px; right:20px;
+  width:320px; max-height:420px;
+  background:#1a1d2b; border-radius:14px;
+  border:1px solid #333; display:none; flex-direction:column;
+}
+#chatbot-header {
+  background:linear-gradient(135deg,#7b61ff,#00d4ff);
+  color:#fff; padding:.6rem; border-radius:14px 14px 0 0;
+  font-weight:bold; font-size:1rem;
+}
+#chatbot-messages { flex:1; overflow:auto; padding:.5rem; font-size:.9rem }
+#chatbot-input { display:flex; border-top:1px solid #333 }
+#chatbot-input input {
+  flex:1; padding:.6rem; border:none; outline:none;
+  background:#0f1320; color:#fff;
+}
+#chatbot-input button {
+  background:#7b61ff; border:none; color:#fff; padding:.6rem 1rem; cursor:pointer;
+}
