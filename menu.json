@@ -1,0 +1,27 @@
+[
+  {
+    "cat": "Pizze Classiche",
+    "items": [
+      { "name": "Margherita", "desc": "Pomodoro, mozzarella, basilico", "price": 6 },
+      { "name": "Diavola", "desc": "Pomodoro, mozzarella, salame piccante", "price": 7 },
+      { "name": "Capricciosa", "desc": "Pomodoro, mozzarella, carciofi, prosciutto, olive", "price": 8 },
+      { "name": "Quattro Formaggi", "desc": "Mozzarella, gorgonzola, fontina, parmigiano", "price": 9 }
+    ]
+  },
+  {
+    "cat": "Fritti",
+    "items": [
+      { "name": "Patatine fritte", "desc": "Porzione classica", "price": 3 },
+      { "name": "Supplì al telefono", "desc": "Riso al pomodoro, mozzarella", "price": 2 },
+      { "name": "Crocchette di patate", "desc": "Fritte al momento", "price": 3 }
+    ]
+  },
+  {
+    "cat": "Bevande",
+    "items": [
+      { "name": "Acqua naturale 50cl", "desc": "Bottiglia PET", "price": 1 },
+      { "name": "Birra chiara 33cl", "desc": "Artigianale", "price": 3 },
+      { "name": "Vino rosso 25cl", "desc": "Locale siciliano", "price": 4 }
+    ]
+  }
+]
