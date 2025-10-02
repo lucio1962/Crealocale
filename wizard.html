@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreaLocale – Wizard</title>
+<link rel="stylesheet" href="style.css">
+<script src="chatbot.js" defer></script>
+<style>
+:root { --bg:#0d0f18; --accent1:#7b61ff; --accent2:#00d4ff; --text:#f2f5ff; }
+body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text)}
+header{text-align:center;padding:1rem}
+h1{margin:0;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+   -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.container{padding:1rem}
+.page{display:none}
+.page.active{display:block}
+input{width:100%;padding:1rem;margin:.6rem 0;border-radius:10px;border:1px solid #333;background:#11152a;color:#fff}
+button{display:block;width:100%;padding:1.2rem;margin:.7rem 0;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-size:1.1rem}
+.preview-box{position:relative;width:100%;height:500px;border:2px solid #333;border-radius:12px;overflow:hidden}
+iframe{width:100%;height:100%;border:none}
+.overlay{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.6);padding:.6rem 1rem;border-radius:8px;color:#fff;font-size:.9rem}
+</style>
+</head>
+<body onload="startWizard()">
+<header><h1>CreaLocale – GUIDO AI</h1></header>
+
+<div class="container">
+  <div id="step1" class="page active">
+    <h2>Inserisci i dati del tuo locale</h2>
+    <input id="nome" placeholder="Nome locale">
+    <input id="indirizzo" placeholder="Indirizzo">
+    <input id="whatsapp" placeholder="WhatsApp">
+    <input id="piva" placeholder="Partita IVA (opzionale)">
+    <button onclick="genera()">Genera anteprima</button>
+  </div>
+
+  <div id="step2" class="page">
+    <h2>Anteprima sito</h2>
+    <div class="preview-box">
+      <iframe id="demoFrame"></iframe>
+      <div id="overlay" class="overlay"></div>
+    </div>
+    <button onclick="location.href='index.html'">← Torna ai demo</button>
+  </div>
+</div>
+
+<!-- Chatbot -->
+<button id="chatbot-toggle" onclick="toggleChatbot()">?</button>
+<div id="chatbot-box">
+  <div id="chatbot-header">GUIDO AI</div>
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-input">
+    <input id="chatbot-text" placeholder="Scrivi...">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+let tipo="";
+let baseUrl="";
+
+function startWizard(){
+  const params=new URLSearchParams(location.search);
+  tipo=params.get("type")||"pizzeria";
+  if(tipo==="pizzeria") baseUrl="https://lucio1962.github.io/ciao-pizza/";
+  if(tipo==="pub") baseUrl="https://lucio1962.github.io/drinking-pub-2024/";
+  guide(1);
+}
+
+function genera(){
+  const nome=document.getElementById("nome").value||"Locale Demo";
+  const indirizzo=document.getElementById("indirizzo").value||"Via Roma 1";
+  const wa=document.getElementById("whatsapp").value||"0000000000";
+  const piva=document.getElementById("piva").value||"";
+
+  document.getElementById("demoFrame").src=baseUrl;
+  document.getElementById("overlay").innerHTML=`
+    <strong>${nome}</strong><br>
+    ${indirizzo}<br>
+    WhatsApp: <a href="https://wa.me/${wa}" style="color:#0ff" target="_blank">${wa}</a><br>
+    ${piva? "P.IVA: "+piva : ""}
+  `;
+
+  document.getElementById("step1").classList.remove("active");
+  document.getElementById("step2").classList.add("active");
+  guide(4);
+}
+</script>
+</body>
+</html>
