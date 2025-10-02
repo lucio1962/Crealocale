@@ -7,20 +7,22 @@
 <link rel="stylesheet" href="style.css">
 <script src="chatbot.js" defer></script>
 <style>
-:root { --bg:#0d0f18; --accent1:#7b61ff; --accent2:#00d4ff; --text:#f2f5ff; }
+:root { --bg:#f3f4f9; --accent1:#7b61ff; --accent2:#00d4ff; --text:#222; }
 body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text)}
 header{text-align:center;padding:1rem}
-h1{margin:0;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+h1{margin:0;font-size:1.6rem;background:linear-gradient(135deg,var(--accent1),var(--accent2));
    -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.container{padding:1rem}
+.container{padding:1rem;max-width:500px;margin:auto}
 .page{display:none}
-.page.active{display:block}
-input{width:100%;padding:1rem;margin:.6rem 0;border-radius:10px;border:1px solid #333;background:#11152a;color:#fff}
-button{display:block;width:100%;padding:1.2rem;margin:.7rem 0;border:none;border-radius:14px;
-  background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-size:1.1rem}
-.preview-box{position:relative;width:100%;height:500px;border:2px solid #333;border-radius:12px;overflow:hidden}
+.page.active{display:block;animation:fade .3s}
+input{width:100%;padding:1rem;margin:.6rem 0;border-radius:10px;border:1px solid #ccc;font-size:1rem}
+button{display:block;width:100%;padding:1rem;margin:.7rem 0;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-size:1.1rem;font-weight:600}
+.preview-box{position:relative;width:100%;height:420px;border:2px solid #ccc;border-radius:12px;overflow:hidden;margin-bottom:1rem}
 iframe{width:100%;height:100%;border:none}
-.overlay{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.6);padding:.6rem 1rem;border-radius:8px;color:#fff;font-size:.9rem}
+.overlay{position:absolute;top:10px;left:10px;right:10px;background:rgba(0,0,0,0.6);
+  padding:.6rem 1rem;border-radius:8px;color:#fff;font-size:.85rem;line-height:1.3}
+@keyframes fade{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 <body onload="startWizard()">
@@ -28,21 +30,22 @@ iframe{width:100%;height:100%;border:none}
 
 <div class="container">
   <div id="step1" class="page active">
-    <h2>Inserisci i dati del tuo locale</h2>
+    <h2 style="font-size:1.2rem">Inserisci i dati del tuo locale</h2>
     <input id="nome" placeholder="Nome locale">
     <input id="indirizzo" placeholder="Indirizzo">
     <input id="whatsapp" placeholder="WhatsApp">
     <input id="piva" placeholder="Partita IVA (opzionale)">
     <button onclick="genera()">Genera anteprima</button>
+    <button onclick="location.href='index.html'">🏠 Torna all’inizio</button>
   </div>
 
   <div id="step2" class="page">
-    <h2>Anteprima sito</h2>
+    <h2 style="font-size:1.2rem">Anteprima sito</h2>
     <div class="preview-box">
       <iframe id="demoFrame"></iframe>
       <div id="overlay" class="overlay"></div>
     </div>
-    <button onclick="location.href='index.html'">← Torna ai demo</button>
+    <button onclick="location.href='index.html'">🏠 Torna all’inizio</button>
   </div>
 </div>
 
@@ -58,9 +61,7 @@ iframe{width:100%;height:100%;border:none}
 </div>
 
 <script>
-let tipo="";
-let baseUrl="";
-
+let tipo="", baseUrl="";
 function startWizard(){
   const params=new URLSearchParams(location.search);
   tipo=params.get("type")||"pizzeria";
@@ -68,21 +69,17 @@ function startWizard(){
   if(tipo==="pub") baseUrl="https://lucio1962.github.io/drinking-pub-2024/";
   guide(1);
 }
-
 function genera(){
   const nome=document.getElementById("nome").value||"Locale Demo";
   const indirizzo=document.getElementById("indirizzo").value||"Via Roma 1";
   const wa=document.getElementById("whatsapp").value||"0000000000";
   const piva=document.getElementById("piva").value||"";
-
   document.getElementById("demoFrame").src=baseUrl;
   document.getElementById("overlay").innerHTML=`
-    <strong>${nome}</strong><br>
-    ${indirizzo}<br>
+    <strong>${nome}</strong><br>${indirizzo}<br>
     WhatsApp: <a href="https://wa.me/${wa}" style="color:#0ff" target="_blank">${wa}</a><br>
     ${piva? "P.IVA: "+piva : ""}
   `;
-
   document.getElementById("step1").classList.remove("active");
   document.getElementById("step2").classList.add("active");
   guide(4);
