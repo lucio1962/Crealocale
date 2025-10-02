@@ -27,17 +27,20 @@ body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--te
 .navbar.scrolled .nav-links a{color:#333}
 /* HERO */
 .hero{
-  text-align:center;padding:4rem 1rem 3rem;
+  text-align:center;padding:4rem 1rem 3rem;margin-top:50px;
   background:linear-gradient(135deg,rgba(123,97,255,.8),rgba(0,212,255,.7)),
              url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
   color:#fff
 }
 .hero h1{font-size:2rem;margin-bottom:.5rem}
 .hero p{font-size:1.1rem;margin-bottom:1.5rem}
-.hero button{
-  padding:1rem 1.5rem;border:none;border-radius:12px;
-  background:#fff;color:#333;font-size:1rem;font-weight:600;cursor:pointer
+.hero .cta-btn{
+  display:inline-block;padding:.9rem 1.6rem;
+  border:none;border-radius:12px;
+  background:#fff;color:#333;font-size:1rem;font-weight:600;
+  cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);transition:.2s;
 }
+.hero .cta-btn:hover{transform:scale(1.05)}
 /* CONTAINER */
 .container{padding:1rem;max-width:500px;margin:auto;margin-top:1rem}
 .card{background:#fff;border-radius:16px;padding:1rem;margin:1rem 0;
@@ -51,7 +54,6 @@ body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--te
 }
 .card a{background:#e9e9ef;color:#333}
 .card button{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-weight:600}
-button.home-btn{background:#555;color:#fff;margin-top:1rem}
 </style>
 </head>
 <body>
@@ -62,6 +64,7 @@ button.home-btn{background:#555;color:#fff;margin-top:1rem}
   <div class="nav-links">
     <a href="#demo">Demo</a>
     <a href="wizard.html">Wizard</a>
+    <a href="premium.html">Premium</a>
   </div>
 </nav>
 
@@ -69,7 +72,7 @@ button.home-btn{background:#555;color:#fff;margin-top:1rem}
 <section class="hero">
   <h1>Crea il tuo sito in pochi click</h1>
   <p>Scegli un modello demo, personalizza i tuoi dati, e hai il tuo sito pronto.</p>
-  <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Inizia ora</button>
+  <button class="cta-btn" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Inizia ora</button>
 </section>
 
 <!-- DEMO -->
@@ -88,8 +91,6 @@ button.home-btn{background:#555;color:#fff;margin-top:1rem}
     <a href="https://lucio1962.github.io/drinking-pub-2024/" target="_blank">👀 Guarda Demo</a>
     <button onclick="location.href='wizard.html?type=pub'">✨ Crea il tuo simile</button>
   </div>
-
-  <button class="home-btn" onclick="location.href='index.html'">🏠 Torna all’inizio</button>
 
 </div>
 
