@@ -1,8 +1,7 @@
-// Carica menu.json e genera HTML
 async function loadMenu(limitFree=false){
-  try {
-    const res = await fetch("menu.json");
-    const data = await res.json();
+  try{
+    const res=await fetch("menu.json");
+    const data=await res.json();
     let html="";
     data.forEach(cat=>{
       html+=`<h4>${cat.cat}</h4><ul>`;
@@ -14,7 +13,7 @@ async function loadMenu(limitFree=false){
       html+="</ul>";
     });
     return html;
-  } catch(e){
-    return "<p>Errore caricamento menu</p>";
+  }catch(e){
+    return "<p>Menu non disponibile</p>";
   }
 }
