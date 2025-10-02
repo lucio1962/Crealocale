@@ -10,10 +10,11 @@
 body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text)}
 /* NAVBAR */
 .navbar{
-  position:sticky;top:0;z-index:10;
-  background:#fff;display:flex;justify-content:space-between;align-items:center;
-  padding:.8rem 1rem;box-shadow:0 2px 6px rgba(0,0,0,.1)
+  position:fixed;top:0;left:0;right:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1rem;transition:all .3s ease;
 }
+.navbar.scrolled{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1)}
 .logo{
   font-size:1.4rem;font-weight:700;
   background:linear-gradient(135deg,var(--accent1),var(--accent2));
@@ -21,11 +22,12 @@ body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--te
   -webkit-text-fill-color:transparent
 }
 .nav-links a{
-  margin-left:1rem;text-decoration:none;color:#333;font-size:.95rem;font-weight:500
+  margin-left:1rem;text-decoration:none;color:#fff;font-size:.95rem;font-weight:500;transition:.3s
 }
+.navbar.scrolled .nav-links a{color:#333}
 /* HERO */
 .hero{
-  text-align:center;padding:3rem 1rem;
+  text-align:center;padding:4rem 1rem 3rem;
   background:linear-gradient(135deg,rgba(123,97,255,.8),rgba(0,212,255,.7)),
              url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
   color:#fff
@@ -37,7 +39,7 @@ body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--te
   background:#fff;color:#333;font-size:1rem;font-weight:600;cursor:pointer
 }
 /* CONTAINER */
-.container{padding:1rem;max-width:500px;margin:auto}
+.container{padding:1rem;max-width:500px;margin:auto;margin-top:1rem}
 .card{background:#fff;border-radius:16px;padding:1rem;margin:1rem 0;
       box-shadow:0 6px 14px rgba(0,0,0,.1)}
 .card img{width:100%;border-radius:12px;margin-bottom:.6rem}
@@ -55,7 +57,7 @@ button.home-btn{background:#555;color:#fff;margin-top:1rem}
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar">
+<nav class="navbar" id="navbar">
   <div class="logo">CreaLocale</div>
   <div class="nav-links">
     <a href="#demo">Demo</a>
@@ -90,5 +92,13 @@ button.home-btn{background:#555;color:#fff;margin-top:1rem}
   <button class="home-btn" onclick="location.href='index.html'">🏠 Torna all’inizio</button>
 
 </div>
+
+<script>
+window.addEventListener("scroll",()=>{
+  const nav=document.getElementById("navbar");
+  if(window.scrollY>50){nav.classList.add("scrolled");}
+  else{nav.classList.remove("scrolled");}
+});
+</script>
 </body>
 </html>
