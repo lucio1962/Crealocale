@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>CreaLocale Premium</title>
+<link rel="stylesheet" href="style.css">
+<script src="chatbot.js" defer></script>
+<script src="menu-loader.js" defer></script>
+<style>
+:root {
+  --bg:#0d0f18;
+  --card:rgba(255,255,255,.08);
+  --accent1:#7b61ff;
+  --accent2:#00d4ff;
+  --text:#f2f5ff;
+}
+body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text)}
+header,footer{padding:1rem;text-align:center;background:#131523}
+h1{font-size:2rem;margin:0;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.container{padding:1rem}
+.page{display:none;animation:fade .3s}
+.page.active{display:block}
+button{display:block;width:100%;padding:1.2rem;margin:.7rem 0;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-size:1.1rem;
+  box-shadow:0 6px 14px rgba(0,0,0,.4);cursor:pointer}
+.card{background:var(--card);border-radius:16px;padding:1rem;margin:.8rem 0;
+  box-shadow:0 6px 14px rgba(0,0,0,.5);backdrop-filter:blur(8px)}
+input{width:100%;padding:1rem;border-radius:12px;border:1px solid #333;background:#11152a;
+  color:#fff;margin:.6rem 0;font-size:1rem}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body onload="guide(3)">
+<header>
+  <h1>CreaLocale Premium</h1>
+  <p style="color:#aaa;font-size:.9rem">Wizard completo – GUIDO AI</p>
+</header>
+
+<div class="container">
+  <div class="page active" id="page1">
+    <h2>Dati attività</h2>
+    <input id="nome" placeholder="Nome locale">
+    <input id="indirizzo" placeholder="Indirizzo">
+    <input id="whatsapp" placeholder="WhatsApp">
+    <input id="piva" placeholder="Partita IVA">
+    <input id="email" placeholder="Email">
+    <button onclick="generaSito()">Genera sito completo</button>
+  </div>
+
+  <div class="page" id="page2">
+    <h2>Anteprima</h2>
+    <div id="preview" class="card"></div>
+  </div>
+</div>
+
+<footer><p style="color:#888;font-size:.8rem">&copy; 2025 CreaLocale</p></footer>
+
+<button id="chatbot-toggle" onclick="toggleChatbot()">?</button>
+<div id="chatbot-box">
+  <div id="chatbot-header">GUIDO AI</div>
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-input">
+    <input id="chatbot-text" placeholder="Scrivi...">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+async function generaSito(){
+  let nome=document.getElementById("nome").value||"Locale Premium";
+  let indirizzo=document.getElementById("indirizzo").value||"Via Roma 1";
+  let wa=document.getElementById("whatsapp").value||"0000000000";
+  let piva=document.getElementById("piva").value||"IT00000000000";
+  let mail=document.getElementById("email").value||"info@email.it";
+
+  let html=`<h3>${nome}</h3>
+            <p>${indirizzo}</p>
+            <p>P.IVA: ${piva}</p>
+            <p>Email: <a href="mailto:${mail}" style="color:var(--accent2)">${mail}</a></p>
+            <a href="https://wa.me/${wa}?text=Vorrei ordinare" 
+               style="display:inline-block;margin:.5rem 0;color:var(--accent2)" target="_blank">
+               Ordina su WhatsApp</a>`;
+  html += await loadMenu(false);
+  document.getElementById("preview").innerHTML=html;
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+  guide(5);
+}
+</script>
+</body>
+</html>
