@@ -1,118 +1,43 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>CreaLocale – Demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreaLocale – Siti Demo</title>
 <link rel="stylesheet" href="style.css">
-<script src="chatbot.js" defer></script>
-<script src="menu-loader.js" defer></script>
 <style>
-:root {
-  --bg:#0d0f18;
-  --card:rgba(255,255,255,.08);
-  --accent1:#7b61ff;
-  --accent2:#00d4ff;
-  --text:#f2f5ff;
-}
-body{margin:0;font-family:"Inter",sans-serif;background:var(--bg);color:var(--text)}
-header{padding:1rem;text-align:center}
-h1{font-size:2rem;margin:0;background:linear-gradient(135deg,var(--accent1),var(--accent2));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-h2{font-size:1.4rem;margin:1rem 0 .5rem}
+body{margin:0;font-family:"Inter",sans-serif;background:#0d0f18;color:#f2f5ff}
+h1{text-align:center;padding:1rem;background:linear-gradient(135deg,#7b61ff,#00d4ff);
+   -webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .container{padding:1rem}
-.page{display:none;animation:fade .3s}
-.page.active{display:block}
-button{display:block;width:100%;padding:1.2rem;margin:.7rem 0;border:none;border-radius:14px;
-  background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;font-size:1.1rem;
-  box-shadow:0 6px 14px rgba(0,0,0,.4);cursor:pointer}
-.card{background:var(--card);border-radius:16px;padding:1rem;margin:.8rem 0;
-  box-shadow:0 6px 14px rgba(0,0,0,.5);backdrop-filter:blur(8px)}
+.card{background:rgba(255,255,255,.05);border-radius:16px;padding:1rem;margin:1rem 0;
+      box-shadow:0 6px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px)}
 .card img{width:100%;border-radius:12px;margin-bottom:.5rem}
-input{width:100%;padding:1rem;border-radius:12px;border:1px solid #333;background:#11152a;
-  color:#fff;margin:.6rem 0;font-size:1rem}
-.banner{background:#222;padding:.7rem;text-align:center;color:var(--accent1);
-  border-radius:10px;margin-top:.8rem;font-size:.9rem}
-@keyframes fade{from{opacity:0}to{opacity:1}}
+.card h2{margin:.5rem 0}
+.card a, .card button{display:block;width:100%;padding:1rem;margin:.4rem 0;text-align:center;
+    border-radius:12px;border:none;font-size:1.1rem;cursor:pointer;text-decoration:none}
+.card a{background:#222;color:#00d4ff}
+.card button{background:linear-gradient(135deg,#7b61ff,#00d4ff);color:#fff}
 </style>
 </head>
-<body onload="guide(1)">
-<header>
-  <h1>CreaLocale</h1>
-  <p style="color:#aaa;font-size:.9rem">Wizard demo – GUIDO AI</p>
-</header>
-
+<body>
+<h1>Scegli il tuo sito demo</h1>
 <div class="container">
-  <div class="page active" id="page1">
-    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80" 
-         alt="hero" style="width:100%;border-radius:14px;margin-bottom:1rem">
-    <h2>Scegli il tuo locale</h2>
-    <button onclick="goPage(2,'pizzeria')">🍕 Pizzeria</button>
-    <button onclick="goPage(2,'pub')">🍺 Pub</button>
-    <button onclick="goPage(2,'bar')">☕ Bar</button>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1601924582971-df2b7d9a94bc?auto=format&fit=crop&w=800&q=80" alt="Pizzeria demo">
+    <h2>Pizzeria Demo – Ciao Pizza</h2>
+    <a href="https://lucio1962.github.io/ciao-pizza/" target="_blank">👀 Guarda Demo</a>
+    <button onclick="location.href='wizard.html?type=pizzeria'">✨ Crea il tuo simile</button>
   </div>
 
-  <div class="page" id="page2">
-    <h2>Seleziona modello</h2>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601924582971-df2b7d9a94bc?auto=format&fit=crop&w=800&q=80" alt="demo pizzeria">
-      <p><strong>Demo Pizzeria</strong></p>
-      <button onclick="goPage(3)">Usa questo</button>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1541542684-4f1f2c85c3de?auto=format&fit=crop&w=800&q=80" alt="demo pub">
-      <p><strong>Demo Pub</strong></p>
-      <button onclick="goPage(3)">Usa questo</button>
-    </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1541542684-4f1f2c85c3de?auto=format&fit=crop&w=800&q=80" alt="Pub demo">
+    <h2>Pub Demo – Drinking Pub 2024</h2>
+    <a href="https://lucio1962.github.io/drinking-pub-2024/" target="_blank">👀 Guarda Demo</a>
+    <button onclick="location.href='wizard.html?type=pub'">✨ Crea il tuo simile</button>
   </div>
 
-  <div class="page" id="page3">
-    <h2>I tuoi dati</h2>
-    <input id="nome" placeholder="Nome locale">
-    <input id="indirizzo" placeholder="Indirizzo">
-    <input id="whatsapp" placeholder="WhatsApp">
-    <button onclick="generaSito()">Genera sito demo</button>
-  </div>
-
-  <div class="page" id="page4">
-    <h2>Anteprima</h2>
-    <div id="preview" class="card"></div>
-    <div class="banner">Versione demo: massimo 3 prodotti per categoria</div>
-  </div>
 </div>
-
-<footer><p style="color:#888;font-size:.8rem">&copy; 2025 CreaLocale</p></footer>
-
-<button id="chatbot-toggle" onclick="toggleChatbot()">?</button>
-<div id="chatbot-box">
-  <div id="chatbot-header">GUIDO AI</div>
-  <div id="chatbot-messages"></div>
-  <div id="chatbot-input">
-    <input id="chatbot-text" placeholder="Scrivi...">
-    <button onclick="sendMessage()">➤</button>
-  </div>
-</div>
-
-<script>
-let tipo="";
-function goPage(n,t){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById("page"+n).classList.add("active");
-  if(t) tipo=t;
-  guide(n);
-}
-async function generaSito(){
-  let nome=document.getElementById("nome").value||"Locale Demo";
-  let indirizzo=document.getElementById("indirizzo").value||"Via Roma 1";
-  let wa=document.getElementById("whatsapp").value||"0000000000";
-  let html=`<h3 style="margin:0 0 .5rem">${nome}</h3><p>${indirizzo}</p>
-            <a href="https://wa.me/${wa}?text=Vorrei ordinare" 
-               style="display:inline-block;margin:.5rem 0;color:var(--accent2)" target="_blank">
-               Ordina su WhatsApp</a>`;
-  html += await loadMenu(true);
-  document.getElementById("preview").innerHTML=html;
-  goPage(4);
-}
-</script>
 </body>
 </html>
